@@ -1,3 +1,57 @@
 *{
-    border: 2px red solid;
+    font-family: monospace;
 }
+.container{
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: rgb(51, 50, 50);
+}
+
+.row1{
+    height: 100px;
+    background-color: rgb(194, 189, 189);
+    margin: 4px;
+    font-size: 70px;
+    text-align: right;
+    padding: 15px;
+    overflow:hidden;
+    
+}
+.row2, .row3, .row4, .row5, .row6{
+    display: flex;
+    flex-grow: 1;
+    
+}
+.btn{
+    flex-grow: 1;
+    padding: 0;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    font-size: 26px;
+    border-radius: 8px;
+
+}
+.btn.third{
+    flex-grow: 0;
+    width: 89.5px
+}
+.function{
+    background-color: rgb(168, 168, 231);
+}
+.operator ,.result{
+    background-color: rgb(223, 191, 132);
+}
+.btn.operator{
+    width: 90px;
+    flex-grow: 0;
+}
+.btn:active{
+    opacity:0.6;
+}
+
