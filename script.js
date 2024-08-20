@@ -125,3 +125,51 @@ decimalButton.addEventListener("click",()=>{
         }
     }
 });
+
+// Add keyboard support!.
+document.body.addEventListener("keydown",(e)=>{
+    let keyPressed=e.key;
+    const numbersArray=["0","1","2","3","4","5","6","7","8","9"];
+    const operatorsArray=["+","-","*","/"];
+    if (numbersArray.includes(keyPressed)){
+        if (switc2==0){
+            display.textContent=display.textContent+keyPressed;
+        } else{
+            display.textContent="";
+            display.textContent=display.textContent+keyPressed;
+            switc2=0;
+        }
+    } else if (operatorsArray.includes(keyPressed)){
+        if (switc1==0){
+            firstNum=Number(display.textContent);
+            operator=keyPressed;
+            switc1=1;
+            switc2=1;
+        } else{
+            secondNum=Number(display.textContent);
+            temp=operate(firstNum,secondNum,operator);
+            operator=keyPressed;
+            firstNum=temp;
+            display.textContent=firstNum;
+            switc2=1;
+        }
+        decimalButton.disabled=false;
+    } else if (keyPressed=="."){
+        display.textContent=display.textContent+keyPressed;
+        let array=Array.from(display.textContent);
+        for(i=0;i<array.length;i++){
+            if (array[i]=="."){
+                decimalButton.disabled=true;
+            }
+        }
+    } else if (keyPressed=="="){
+        secondNum=Number(display.textContent);
+        temp=operate(firstNum,secondNum,operator);
+        firstNum=temp;
+        display.textContent=firstNum;
+        firstNum=0;
+        secondNum=0;
+        switc1=0;
+        decimalButton.disabled=false;
+    }
+});
